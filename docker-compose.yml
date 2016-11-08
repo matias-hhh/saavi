@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+  app:
+    build: ./app
+    ports:
+      - 3000:3000
+    volumes:
+      - ./app/src:/app/src
+    environment:
+      POSTGRES_URI: postgres://skilta:kissa@database/saavi
+    command: npm start
+
+  database:
+    image: postgres:9.6
+    environment:
+      POSTGRES_USER: skilta
+      POSTGRES_PASSWORD: kissa
+      POSTGRES_DB: saavi
