@@ -1,11 +1,22 @@
-const koa       = require('koa'),
+const Koa       = require('koa'),
+      Router    = require('koa-router'),
+      views     = require('koa-views'),
       dbHelpers = require('./helpers/db-helpers');
 
-const app = new koa();
+const app    = new Koa(),
+      router = new Router();
 
-app.use(async function (ctx, next) {
-  ctx.body = "Hello world!";
-});
+app.use(views(`${__dirname}/views`), {map: {pug: 'pug'}});
+
+router
+  .get('/', async function getMainPage(ctx, next) {
+    ctx.body = 'Hello world, this is front-page!';
+  })
+  .get('/pug', async function getPugPage(ctx, next) {
+    await ctx.render('example.pug', {name: 'Skilta'});
+  });
+
+app.use(router.routes());
 
 async function startServer() {
   let db = await dbHelpers.establishDBConnection();
