@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+  wiki:
+    extends:
+      file: docker-compose.yml
+      service: wiki
+    image: image-registry.leonidasoy.fi/saavi-wiki:latest
+    volumes: []
+    ports: []
+    stateful: true
+    environment:
+      - NODE_ENV=production
+      - KONTENA_LB_MODE=http
+      - KONTENA_LB_BALANCE=roundrobin
+      - KONTENA_LB_INTERNAL_PORT=3001
+      - KONTENA_LB_VIRTUAL_HOSTS=saavi.leonidasoy.fi
+    external_links:
+      - external-loadbalancer-lb1

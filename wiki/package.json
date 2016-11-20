@@ -1,0 +1,12 @@
+{
+  "name": "saavi-wiki",
+  "version": "0.0.1",
+  "description": "Wiki for Saavi, TUT's Sahkökilta's intra",
+  "main": "./src/app.js",
+  "scripts": {
+    "start": "jingo -c /wiki/jingo.yml",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matias Huhdanmäki",
+  "license": "MIT"
+}

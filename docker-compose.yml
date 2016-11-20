@@ -11,6 +11,12 @@ services:
       POSTGRES_URI: postgres://skilta:kissa@database/saavi
     command: npm start
 
+  wiki:
+    build: ./wiki
+    ports:
+      - 3001:3001
+    command: npm start
+
   database:
     image: postgres:9.6
     environment:
