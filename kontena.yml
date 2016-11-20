@@ -15,5 +15,6 @@ services:
       - KONTENA_LB_BALANCE=roundrobin
       - KONTENA_LB_INTERNAL_PORT=3001
       - KONTENA_LB_VIRTUAL_HOSTS=saavi.leonidasoy.fi
+      - KONTENA_LB_CUSTOM_SETTINGS=redirect scheme https code 301 if !{ ssl_fc }
     external_links:
       - external-loadbalancer-lb1
